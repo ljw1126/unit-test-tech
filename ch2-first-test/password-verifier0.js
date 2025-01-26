@@ -1,6 +1,6 @@
-const verifyPassword = (input, rules => {
+const verifyPassword = (input, rules) => {
 	const errors = [];
-	rules.forEach(rule => {
+	rules.forEach((rule) => {
 	  const result = rule(input);
 	  if(!result.passed) {
              errors.push(`error ${result.reason}`);
@@ -8,4 +8,8 @@ const verifyPassword = (input, rules => {
 	});
 
 	return errors;
+};
+
+module.exports = {
+  verifyPassword
 };
