@@ -2,9 +2,8 @@ const { verifyPassword } = require('../password-verifier0');
 	
 describe('verifyPassword', () => {
     describe('with a failing rule', () => {
-        const fakeRule = () => ({passed: false, reason: 'fake reason'});
-        
-        test('returns errors', () => {
+        it('returns errors', () => {
+          const fakeRule = () => ({passed: false, reason: 'fake reason'});
 
           const errors = verifyPassword('any value', [fakeRule]);
 
