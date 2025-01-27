@@ -6,20 +6,18 @@ describe('PasswordVerifier', () => {
 
   describe('with a failing rule', () => {
      let fakeRule, errors;
+     // beforeEach()에서 verify 호출하도록 변경
      beforeEach(() => {
        fakeRule = () => ({ passed: false, reason: 'fake reason' });
        verifier.addRule(fakeRule);
+       errors = verifier.verify('any value');
      });
 
      it('has an error message based on the rule.reason', () => {
-        errors = verifier.verify('any value');
-
         expect(errors[0]).toContain('fake reason');
      });
 
      it('has exactly one error', () => {
-         errors = verifier.verify('any value');
-
          expect(errors.length).toBe(1);
      });
   });
