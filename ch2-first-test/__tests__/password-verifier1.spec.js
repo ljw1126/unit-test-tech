@@ -156,4 +156,21 @@ describe('v8 PasswordVerifier', () => {
 });
 
 
+// 2-25
+test('verify, with no rules, throws exception', () => {
+  const verifier = makeVerifier();
 
+  try {
+     verifier.verify('any input');
+     fail('error was expected but not thrown');
+  } catch(e) {
+    expect(e.message).toContain('no rules configured');
+  }
+});
+
+// 2-26
+test('verify, with no rules, throws exception', () => {
+  const verifier = makeVerifier();
+  expect(() => verifier.verify('any input'))
+    .toThrowError(/no rules configured/);
+});
