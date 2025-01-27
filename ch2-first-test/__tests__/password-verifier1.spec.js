@@ -64,6 +64,7 @@ describe('PasswordVerifier', () => {
 });
 
 
+// 2-17. beforeEach()를 팩토리 함수로 대체
 const makeVerifier = () => new PasswordVerifier1();
 const passingRule = () => ({passed: true, reason: ''});
 
@@ -118,6 +119,39 @@ describe('v8 PasswordVerifier', () => {
         expect(errors[0]).toContain('fake reason');
      });
   });
+
+// 2-18. describe() 구조 해제, test() 재사용
+ test('pass verifier, with failed rule, has an error message based on the rule.reason', () => {
+    const verifier = makeVerifierWithFailedRule('fake reason');
+    const errors = verifier.verify('any input');
+    expect(errors[0]).toContain('fake reason');
+ });
+
+ test('pass verfier, with failed rule, has exactly one error', () => {
+    const verifier = makeVerifierWithFailedRule('fake reason');
+    const errors = verifier.verify('any input');
+    expect(errors.length).toBe(1);
+ });
+
+ test('pass verifier, with passing rule, has no errors', () => {
+    const verifier = makeVerifierWithPassingRule();
+    const errors = verifier.verify('any input');
+    expect(errors.length).toBe(0);
+ });
+
+ test('pass verifier, with passing and failing rule, has one error', () => {
+    const verifier = makeVerifierWithFailedRule('fake reason');
+    verifier.addRule(passingRule);
+    const errors = verifier.verify('any input');
+    expect(errors.length).toBe(1);
+ });
+
+ test('pass verifier, with passing and failing rule, error text belongs to failed rule', () => {
+    const verifier = makeVerifierWithFailedRule('fake reason');
+    verifier.addRule(passingRule);
+    const errors = verifier.verify('any input');
+    expect(errors[0]).toContain('fake reason');
+ });
 
 });
 
