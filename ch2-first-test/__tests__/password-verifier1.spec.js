@@ -8,8 +8,7 @@ describe('PasswordVerifier', () => {
      let fakeRule, errors;
      // beforeEach()에서 verify 호출하도록 변경
      beforeEach(() => {
-       fakeRule = () => ({ passed: false, reason: 'fake reason' });
-       verifier.addRule(fakeRule);
+       verifier.addRule(makeFailingRule('fake reason'));
        errors = verifier.verify('any value');
      });
 
@@ -26,8 +25,7 @@ describe('PasswordVerifier', () => {
      let fakeRule, errors;
 
      beforeEach(() => {
-         fakeRule = () => ({ passed : true, reason : ''});
-         verifier.addRule(fakeRule);
+         verifier.addRule(makePassingRule());
          errors = verifier.verify('any value');
      });
 
@@ -39,10 +37,8 @@ describe('PasswordVerifier', () => {
   describe('with a failing and a passing rule', () => {
      let fakeRulePass, fakeRuleFail, errors;
      beforeEach(() => {
-        fakeRulePass = () => ({passed: true, reason: 'fake success'});
-        fakeRuleFail = () => ({passed: false, reason: 'fake reason'});
-        verifier.addRule(fakeRulePass);
-        verifier.addRule(fakeRuleFail);
+        verifier.addRule(makePassingRule());
+        verifier.addRule(makeFailingRule('fake reason'));
         errors = verifier.verify('any value');
      });
 
@@ -55,7 +51,15 @@ describe('PasswordVerifier', () => {
      });
   });
 
+  const makeFailingRule = (reason) => {
+     return () => {
+        return { passed: false, reason: reason }; 
+     };
+  };
 
+  const makePassingRule = () => () => {
+     return { passed: true, reason: ''};
+  };
 
 });
 
