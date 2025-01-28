@@ -1,0 +1,24 @@
+{
+  "name": "unit-test-tech",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "ch2": "jest --watch ch2",
+    "ch3": "jest --watch ch3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ljw1126/unit-test-tech.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ljw1126/unit-test-tech/issues"
+  },
+  "homepage": "https://github.com/ljw1126/unit-test-tech#readme",
+  "description": "",
+  "dependencies": {
+    "moment": "^2.30.1"
+  }
+}
