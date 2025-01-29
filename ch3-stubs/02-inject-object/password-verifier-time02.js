@@ -3,13 +3,13 @@ const MONDAY = 1;
 const SATURDAY = 6;
 
 class PasswordVerifier {
-    constructor(rules, dayOfWeekFn) {
+    constructor(rules, timeProvider) {
         this.rules = rules;
-        this.dayOfWeek = dayOfWeekFn;
+        this.timeProvider = timeProvider;
     }
 
     verify(input) {
-        if([SATURDAY, SUNDAY].includes(this.dayOfWeek())) {
+        if([SATURDAY, SUNDAY].includes(this.timeProvider.getDay())) {
             throw new Error("It's the weekend!");
         }
 
