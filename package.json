@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest",
     "ch2": "jest --watch ch2",
-    "ch3": "jest --watch ch3"
+    "ch3": "jest --watch ch3",
+    "ch4": "jest --watch ch4"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "moment": "^2.30.1"
   }
 }
