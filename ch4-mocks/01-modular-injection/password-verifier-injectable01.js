@@ -1,4 +1,4 @@
-// 모듈 주입 방식으로 변경
+// 모듈 주입 방식으로 변경, 참고로 require(..) 경우 complicaated-logger.js에서 export한 객체 전체가 반환된다 (info, debug)
 const originalDependencies = {
     log: require('./complicated-logger')
 };
