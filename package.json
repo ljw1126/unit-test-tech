@@ -6,7 +6,8 @@
     "test": "jest",
     "ch2": "jest --watch ch2",
     "ch3": "jest --watch ch3",
-    "ch4": "jest --watch ch4"
+    "ch4": "jest --watch ch4",
+    "ch5": "jest --watch ch5"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,9 @@
   "homepage": "https://github.com/ljw1126/unit-test-tech#readme",
   "description": "",
   "devDependencies": {
+    "@fluffy-spoon/substitute": "^1.208.0",
     "@types/jest": "^29.5.14",
+    "substitute": "^0.7.1",
     "ts-jest": "^29.2.5",
     "typescript": "^5.7.3"
   },
